@@ -1,2 +1,2 @@
-# rac-praktikum
+# Računalniški praktikum 
 uishdfvdfkvi
