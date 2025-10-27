@@ -34,3 +34,22 @@ code {
 h1 {
     color: #330066;
     }
+h2 {
+    margin-top: 2em;
+    border-top: 1px #AAAAAA solid;
+    padding: 0.5em;
+    }
+#uvod {
+    padding: 2em;
+    background-color: rgb(51, 0, 102, 0.1)
+    }
+.slika {
+    font-size: 0.9em;
+    width: 40%;
+    float: right;
+    margin-left: 2em;
+    }
+.slika img {
+    width: 100%;
+    height: auto;
+    }
