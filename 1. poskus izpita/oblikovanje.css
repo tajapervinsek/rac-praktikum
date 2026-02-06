@@ -1,0 +1,43 @@
+/* * *  * * *  * * *  * * *  * * *
+Ta naloga je sestavljena iz dveh delov: HTML in CSS.
+Prvi del je v datoteki dokument.html.
+Pri točkovanju bomo upoštevali, ali (in do kakšne mere) je 
+izvorna koda dokumenta veljaven in urejen CSS.
+
+1. naloga 
+   Sklop deklaracij za značko body dopolnite z velikostjo pisave 1.2em
+2. naloga
+   Dodajte izbiralec (selektor) za element z atributom id z vrednostjo "risks".
+   V njegov sklop deklaracij dodajte deklaracijo za rdečo (#cc0000) barvo besedila.
+
+ * * *  * * *  * * *  * * *  * * */
+
+body {
+    color: #333333; 
+    font-family: Garamond, "Hoefler Text", "Times New Roman", Times, serif;
+    line-height: 1.5;
+    max-width: 40em;
+    margin: auto;
+    text-align: justify;
+}
+
+.golob {
+    font-size: 0.9em;
+    text-align: left;
+    float: right;
+    width: 30%;
+    margin-left: 2em;
+}
+
+.golob img {
+    width: 100%;
+}
+
+.kazalo {
+    background-color: #f0ffff;
+    padding: 2em;
+}
+
+div {
+    font-size: 0.9;
+}

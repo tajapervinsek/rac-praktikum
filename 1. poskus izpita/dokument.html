@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- * * *  * * *  * * *  * * *  * * *
+Ta naloga je sestavljena iz dveh delov: HTML in CSS.
+Drugi del je v datoteki oblikovanje.css.
+Pri točkovanju bomo upoštevali, ali (in do kakšne mere) je 
+izvorna koda dokumenta veljaven in urejen HTML5.
+
+  1. naloga
+     V dokumentu sta dve napaki. Smiselno ju popravite.
+     Pomagajte si z validatorjem, kot na vajah.
+     Naslov strani naj bo enak naslovu, ki ga najdete v znački h1.
+  2. naloga
+     Vrstici "Real-life" implementation in "Risks" v dokumentu
+     (označeni sta tudi s komentarjem) naj bosta podnaslova na drugem nivoju.
+     Obema dodajte atribut "id", tako da bodo delovale povezave 
+     v razdelku "Contents".
+  3. naloga
+     Oblikujte tabelo na koncu dokumenta.
+     
+     * * *  * * *  * * *  * * *  * * * -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="oblikovanje.css">
+  </head>
+  <body>
+    <h1>IP over Avian Carriers</h1>
+
+    <p>The content of this page has been slightly adapted from the Wikipedia page on <a
+      href="https://en.wikipedia.org/wiki/IP_over_Avian_Carriers">IP over Avian Carriers</a>.</p>
+    
+    <div class="golob">
+      <img src="pigeon.jpeg" alt="A homing pigeon">
+      <p>Under RFC 1149, a homing pigeon (exemplar in Scheßlitz) can carry Internet Protocol traffic.</p>
+      <p><a href="https://commons.wikimedia.org/wiki/User:Monandowitsch">Monandowitsch</a> / <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a></p>
+    </div>
+
+    <p>In computer networking, <strong>IP over Avian Carriers (IPoAC) is a proposal to carry Internet Protocol (IP) traffic by birds such as homing pigeons. IP over Avian Carriers was initially described in RFC 1149 issued by the Internet Engineering Task Force (IETF), written by D. Waitzman, and released on April 1, 1990. It is one of several April Fools' Day Request for Comments.</p>
+    
+    <p>Waitzman described an improvement of his protocol in RFC 2549, IP over Avian Carriers with Quality of Service (1 April 1999). Later, in RFC 6214—released on 1 April 2011, and 13 years after the introduction of IPv6—Brian Carpenter and Robert Hinden published Adaptation of RFC 1149 for IPv6.</p>
+
+    <p>IPoAC has been successfully implemented, but for only nine packets of data, with a packet loss ratio of 55% (due to operator error), and a response time ranging from 3,000 seconds (≈50 minutes) to over 6,000 seconds (≈1.77 hours). Thus, this technology suffers from poor latency.</p>
+
+    <div class="kazalo">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#implementation">Real-life implementation</a></li>
+        <li><a href="#risks">Risks</a></li>
+      </ol>
+    </div>
+
+    <!-- Drugo-nivojski podnaslov -->
+    Real-life implementation
+
+    <p>On 28 April 2001, IPoAC was implemented by the Bergen Linux user group, under the name CPIP (for "Carrier Pigeon Internet Protocol"). They sent nine packets over a distance of approximately five kilometers (three miles), each carried by an individual pigeon and containing one ping (ICMP Echo Request), and received four responses.</p>
+
+    <pre>
+      Script started on Sat Apr 28 11:24:09 2001
+      $ /sbin/ifconfig tun0
+      tun0      Link encap:Point-to-Point Protocol
+                inet addr:10.0.3.2  P-t-P:10.0.3.1  Mask:255.255.255.255
+                UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:150  Metric:1
+                RX packets:1 errors:0 dropped:0 overruns:0 frame:0
+                TX packets:2 errors:0 dropped:0 overruns:0 carrier:0
+                collisions:0
+                RX bytes:88 (88.0 b)  TX bytes:168 (168.0 b)
+      
+      $ ping -c 9 -i 900 10.0.3.1
+      PING 10.0.3.1 (10.0.3.1): 56 data bytes
+      64 bytes from 10.0.3.1: icmp_seq=0 ttl=255 time=6165731.1 ms
+      64 bytes from 10.0.3.1: icmp_seq=4 ttl=255 time=3211900.8 ms
+      64 bytes from 10.0.3.1: icmp_seq=2 ttl=255 time=5124922.8 ms
+      64 bytes from 10.0.3.1: icmp_seq=1 ttl=255 time=6388671.9 ms
+      
+      --- 10.0.3.1 ping statistics ---
+      9 packets transmitted, 4 packets received, 55% packet loss
+      round-trip min/avg/max = 3211900.8/5222806.6/6388671.9 ms
+      
+      
+      Script done on Sat Apr 28 14:14:28 2001
+    </pre>
+
+    <p>This real life implementation was mentioned by the French MP Martine Billard in the French Assemblée Nationale, during debates about Hadopi. The implementation was noted in the song "Paper Pings" by Steve Savitzky.</p>
+
+    <!-- Drugo-nivojski podnaslov -->
+    Risks
+
+    <p>In December 2005, a Gartner report on bird flu that concluded "A pandemic wouldn't affect IT systems directly" was humorously criticized for neglecting to consider RFC 1149 and RFC 2549 in its analysis.</p>
+
+    <p>Known risks to the protocol include:</p>
+
+    <!-- Oblikujte tabelo tako, da je vsebina vsake vrstice v svoji celici.
+         Če vam zmanjkuje časa, naredite glavo in eno vrstico, ostalo pa zakomentirajte. -->
+    <!-- Glava tabele s tremi celicami -->
+    Risk
+    RFC
+    Description
+    <!-- Prva vrstica s tremi celicami -->
+    Carriers being attacked by birds of prey
+    RFC2549
+    "Unintentional encapsulation in hawks has been known to occur, with decapsulation being messy and the packets mangled."
+    <!-- Druga vrstica s tremi celicami -->
+    Carriers being blown off course
+    RFC1149
+    "While broadcasting is not specified, storms can cause data loss.
+    <!-- Tretja vrstica s tremi celicami -->
+    The absence of viable local carriers
+    RFC6214
+    "In some locations, such as New Zealand, a significant proportion of carriers are only able to execute short hops, and only at times when the background level of photon emission is extremely low." This describes the flightless and nocturnal nature of kiwis.
+    <!-- Četrta vrstica s tremi celicami -->
+    Disease affecting the carriers
+    RFC6214
+    "There is a known risk of infection by the so-called H5N1 virus."
+
+  </body>
+</html>
