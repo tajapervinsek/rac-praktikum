@@ -1,0 +1,52 @@
+
+body {
+    font-family: "Georgia", Garamond, "Hoefler Text", "Times New Roman", Times, serif;
+    font-size: 1.125em; 
+    line-height: 1.75; 
+    max-width: 700px; 
+    margin: 2em auto; 
+    text-align: justify;
+    background-color: #f4f6f9; 
+    color: #333; 
+    padding: 0 1em; 
+}
+
+.slika {
+    margin: 0 auto;
+}
+
+img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    margin: 1em auto; 
+    border-radius: 4px; 
+}
+
+h2 {
+    border-bottom: 2px solid #ccc; 
+}
+
+tr:nth-child(even) {
+    
+}
+
+table {
+    width: 100%; 
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+td, th {
+    padding: 0.75em;
+    border: 1px solid #ccc; 
+    text-align: left;
+    font-size: 0.95em; 
+}
+
+th {
+    background-color: #e9ecef; 
+    font-weight: bold;
+    color: #333;
+}
