@@ -19,6 +19,7 @@ body {
     max-width: 40em;
     margin: auto;
     text-align: justify;
+    font-size: 1.2em;
 }
 
 .golob {
@@ -40,4 +41,8 @@ body {
 
 div {
     font-size: 0.9;
+}
+
+#risks {
+    color: #cc0000;
 }
