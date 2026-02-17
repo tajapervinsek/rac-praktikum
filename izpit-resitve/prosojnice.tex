@@ -1,0 +1,76 @@
+\documentclass{beamer}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, bbm}
+
+\usetheme{metropolis}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{caption}[numbered]
+
+\usepackage{palatino}
+\usefonttheme{serif}
+
+{\theoremstyle{definition}
+\newtheorem{definicija}{Definicija}
+}
+
+\begin{document}
+
+
+\title{Krožne matrike}
+\subtitle{Samo Primer}
+\institute[FMF]{Fakulteta za matematiko in fiziko}
+\date{}
+
+\begin{frame}
+        \titlepage
+\end{frame}
+
+
+% 
+% Pozor: dokler ne dodate vsaj enega okolja za prosojnico, 
+% se datoteka ne bo prevedla.
+% 
+
+
+
+
+
+\begin{frame}{Definicija}
+\begin{definicija}
+    Krožna matrika $n \times n$ je matrika oblike 
+    \[
+        \begin{pmatrix}
+         c_0     &   c_{n-1} & \ldots &  c_2     & c_1 \\
+         c_1     &   c_0     & \ldots &  c_{n-1} & c_2 \\
+         c_2     &   c_1     & \ldots &  c_0     & c_{n-1} \\
+         \vdots  &   \vdots  & \vdots &  \ddots  & \vdots   \\
+         c_{n-1} &   c_{n-2} & \ldots &  c_1     & c_0   
+        \end{pmatrix}
+        \]
+\end{definicija}
+\end{frame}
+
+\begin{frame}{Lastnosti}
+\begin{itemize}[<+->]
+        \item Lastni vektorji krožne matrike so 
+        $v_j = (1, \omega_j, \omega_j^2, \ldots, \omega_j^{n-1})^T$, 
+        kjer je $\omega_j = e^\frac{2\pi i j}{n} $ za $j=0, \ldots, n-1$.
+        \item Lastni vektorji krožne matrike so stolpci matrike enotske diskretne Fourierjeve transformacije, 
+        ki jo lahko prikažemo kot Vandermondovo matriko.
+        \item Krožne matrike tvorijo komutativno algebro, ker je za poljubni dve matriki 
+        $A$ in $B$, vsota $A + B$ tudi krožna matrika, prav tako je krožna matrika tudi njun produkt 
+        $AB$, ter tudi velja $AB = BA$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Literatura}
+\bibliographystyle{siam}
+\bibliography{literatura.bib}
+\nocite{*}
+\end{frame}
+
+\end{document}
+

@@ -11,24 +11,31 @@
 \usepackage{booktabs}
 \usepackage{mathtools}
 
-% Numerično reševanje Black-Scholesove enačbe
-% Matej Rojec
-% 2025-01-29
+{\theoremstyle{definition}
+\newtheorem{definicija}{Definicija}
+}
+
+\newcommand{\parc}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Numerično reševanje Black-Scholesove enačbe}
+\author{Matej Rojec}
+\date{2025-01-29}
 
 \begin{document}
+\maketitle
 
-% začetek povzetka
+\begin{abstract}
     Black-Scholesov model je matematični model za vrednotenje evropskih opcij, ki temelji na riziko-neutralnem vrednotenju in zavarovanju opcij prek neprekinjeno prilagojenega delta zavarovanja. Model vključuje Black-Scholesovo enačbo, ki omogoča izračun teoretične cene opcij in vpoglede, kot so meje brez arbitraže. Ključni parameter modela je povprečna bodoča volatilnost osnovnega sredstva, ki jo določimo iz cen drugih opcij za umerjanje kompleksnejših modelov.
     Obravnavamo primer evropske prodajne opcije s parametri $r = 0,08$, $\sigma = 0,4$, $T = 4$ in $K = 5$ in numerično reševanje Black-Scholesove enačbe.
-% konec povzetka
+\end{abstract}
 
 \section{Reševanje Black-Scholesove enačbe}
 
 \subsection{Uvod}
 
-% začetek definicije
-Black-Scholesov model ?? (ali Black-Scholes-Mertonov model) je matematični model za dinamiko finančnega trga, ki vključuje izvedene finančne instrumente. 
-% konec definicije
+\begin{definicija}
+Black-Scholesov model \cite{wiki} (ali Black-Scholes-Mertonov model) je matematični model za dinamiko finančnega trga, ki vključuje izvedene finančne instrumente. 
+\end{definicija}
 
 Iz parabolne parcialne diferencialne enačbe, znane kot Black-Scholesova enačba, je mogoče izpeljati Black-Scholesovo formulo, ki omogoča teoretično oceno cene evropskih opcij. Formula pokaže, da ima opcija enolično ceno, določeno z rizikom vrednostnega papirja in pričakovano donosnostjo (pri čemer se pričakovana donosnost nadomesti z riziko-neutralno obrestno mero). Enačba in model sta poimenovana po ekonomistih Fischerju Blacku in Myronu Scholesu, medtem ko je Robert C. Merton prvi napisal akademski članek na to temo.
 Osnovno načelo modela je zavarovanje opcije z nakupom in prodajo osnovnega sredstva na poseben način, da se odpravi rizik. Ta vrsta zavarovanja se imenuje “neprekinjeno prilagojeno delta zavarovanje” in predstavlja osnovo za bolj zapletene strategije, ki jih uporabljajo investicijske banke in hedge skladi.
@@ -43,43 +50,46 @@ Obravnavamo območje
 \end{equation}
 za dovolj veliko $S^*$ in končni/robni pogoj za enačbo Black-Scholes, ki definira $V(S, t)$ kot vrednost opcije v točki $(S, t)$. Da bi končni pogoj, povezan z enačbo Black-Scholes, zamenjali z začetnim pogojem, izvedemo spremembo spremenljivk $U(S, t) \coloneqq V(S, T - t)$ in obravnavamo problem:
 
-% začetek enačbe
-    % \label{eq:bs}
-    % \left\{
-    % začetek
-    % dd{U}{t} = \frac{\sigma^2}{2}S^2 \frac{\partial^{2} {S}}{\partial {U}^{2}} + rS dd{U}{S} - rU  \textnormal{in } \mathcal{R}^T_V
-    % U(S,0) = u_0(S)      ~~S \in [0,S^*] 
-    % U(0,t) = u_a(t)      t \in [0,T] 
-    % U(S^*,t) = u_b(t)    t \in [0,T]
-    % konec
-    % \right.
-% konec enačbe
+\begin{equation}
+    \label{eq:bs}
+    \left\{
+    \begin{array}{cc}
+    \parc{U}{t} = \frac{\sigma^2}{2}S^2 \frac{\partial^{2} {S}}{\partial {U}^{2}} + rS \parc{U}{S} - rU & \textnormal{in } \mathcal{R}^T_V \\
+    U(S,0) = u_0(S)   &   ~~S \in [0,S^*] \\
+    U(0,t) = u_a(t)   &   t \in [0,T] \\
+    U(S^*,t) = u_b(t) &   t \in [0,T] \\
+    \end{array}
+    \right.
+\end{equation}
     
 za nekatere funkcije $u_0$, $u_a$ in $u_b$, ki so odvisne od vrste opcije in za katere predpostavljamo, da so znane.
 
-Obravnavamo primer evropske prodajne opcije s parametri $r = 0,08$, $\sigma = 0,4$, $T = 4$ in $K = 5$ in enačbo ??. 
+Obravnavamo primer evropske prodajne opcije s parametri $r = 0,08$, $\sigma = 0,4$, $T = 4$ in $K = 5$ in enačbo \eqref{eq:bs}. 
 Predstavljajmo si, da bi morali izračunati vrednost opcije v času $t = 1$, pri čemer predpostavimo, da je tržna cena sredstva $S = 5$.
-Enačbo ?? z omenjenimi parametri lahko rešimo numerično z uporabo metode končnih diferenc. 
-Tabela ?? prikazuje napake, ki se pojavljajo pri uporabi eksplicitne metode za različne velikosti korakov
+Enačbo \eqref{eq:bs} z omenjenimi parametri lahko rešimo numerično z uporabo metode končnih diferenc. 
+Tabela \ref{tabela:napake} prikazuje napake, ki se pojavljajo pri uporabi eksplicitne metode za različne velikosti korakov
 $h_s$ in $h_t$ v času $t=1$.
 
  
-% začetek tabele
+\begin{table}
     \centering
-    % cccccc
-    % \toprule
-    % \multicolumn{1}{l}{\textbf{$h_s / h_t$}} & \textbf{1/625} & \textbf{1/1250} & \textbf{1/2500} & \textbf{1/5000} & \textbf{1/10000} \\\midrule
-    % 1/20  0.18  0.18  0.18  0.18  0.18 
-    % 1/40  0.04  0.04  0.04  0.04  0.04 
-    % 1/80  0.06  0.06  0.06  0.06  0.06 
-    % 1/160  0.04  0.04  0.04 
-    % 1/320 0.02 
-    % \bottomrule
-    % Napis pod tabelo:
-    % Napake, ki se pojavljajo pri uporabi eksplicitne metode za različne velikosti korakov $h_s$ in $h_t$ v času $t=1$.
-% konec tabele
+    \begin{tabular}{cccccc}
+    \toprule
+    \multicolumn{1}{l}{\textbf{$h_s / h_t$}} & \textbf{1/625} & \textbf{1/1250} & \textbf{1/2500} & \textbf{1/5000} & \textbf{1/10000} \\ 
+    \midrule
+    1/20  & 0.18  & 0.18  & 0.18 & 0.18 & 0.18 \\
+    1/40  & 0.04  & 0.04  & 0.04 & 0.04 & 0.04 \\
+    1/80  & 0.06  & 0.06  & 0.06 & 0.06 & 0.06 \\
+    1/160 &       &       & 0.04 & 0.04 & 0.04 \\
+    1/320 &       &       &      &      &  0.02 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Napake, ki se pojavljajo pri uporabi eksplicitne metode za različne velikosti korakov $h_s$ in $h_t$ v času $t=1$.}
+    \label{tabela:napake}
+\end{table}
 
-% literatura
+\bibliographystyle{plain}
+\bibliography{viri.bib}
 
 \end{document}
 
