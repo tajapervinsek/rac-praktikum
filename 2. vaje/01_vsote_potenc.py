@@ -1,42 +1,36 @@
 # =============================================================================
-# Datumi
-# =====================================================================@000927=
+# Vsote potenc
+# =====================================================================@000953=
 # 1. podnaloga
-# Sestavite funkcijo `je_prestopno(leto)`, ki vrne `True`, kadar je `leto`
-# prestopno, in `False`, kadar ni.
+# Sestavite funkcijo `vsota_prvih(n)`, ki vrne vsoto prvih `n` naravnih števil.
 # =============================================================================
-def je_prestopno(leto):
-    if leto % 400 == 0:
-        return True
-    if leto % 100 == 0:
-        return False
-    if leto % 4 == 0:
-        return True
+def vsota_prvih(n):
+    if n == 0:
+        return 0
     else:
-        return False 
-# =====================================================================@000928=
+        return n + vsota_prvih(n - 1)
+
+# =====================================================================@000954=
 # 2. podnaloga
-# Sestavite funkcijo `stevilo_dni(mesec, leto)`, ki vrne število dni danega
-# meseca (podanega s številom med 1 in 12) v danem letu.
+# Sestavite funkcijo `vsota_prvih_kvadratov(n)`, ki vrne vsoto kvadratov
+# prvih `n` naravnih števil.
 # =============================================================================
-def stevilo_dni(mesec, leto):
-    if mesec in [1, 3, 5, 7, 8, 10, 12]:
-        return 31
-    elif mesec in [4, 6, 9, 11]:
-        return 30
-    elif mesec == 2:
-        return 29 if je_prestopno(leto) else 28
-# =====================================================================@000929=
+def vsota_prvih_kvadratov(n):
+    if n == 1:
+        return 1
+    else:
+        return n ** 2 + vsota_prvih_kvadratov(n - 1)
+# =====================================================================@000955=
 # 3. podnaloga
-# Sestavite funkcijo `je_veljaven_datum(dan, mesec, leto)`, ki vrne `True`
-# natanko tedaj, kadar `dan`, `mesec` in `leto` določajo veljaven datum
-# (torej `mesec` mora biti število med 1 in 12, `dan` pa mora ustrezati dnevu
-# v tem mesecu).
+# Sestavite funkcijo `vsota_prvih_potenc(n, k)`, ki vrne vsoto `k`-tih potenc
+# prvih `n` naravnih števil. Argument `k` naj bo neobvezen in naj ima privzeto
+# vrednost `1`.
 # =============================================================================
-def je_veljaven_datum(dan, mesec, leto):
-    if not (1 <= mesec <= 12) or ( 0 <= leto < 2):
-        return False
-    return 1 <= dan <= stevilo_dni(mesec, leto)
+def vsota_prvih_potenc(n, k = 1):
+    if n == 1:
+        return 1
+    else:
+        return n ** k + vsota_prvih_potenc(n - 1, k)
 
 
 
@@ -654,14 +648,14 @@ def _validate_current_file():
     if Check.part():
         Check.current_part[
             "token"
-        ] = "eyJwYXJ0Ijo5MjcsInVzZXIiOjExNDY2fQ:1vusqV:PP4xVbxJosmv87NLUckqOPDq7EdCclySXYx4qnyeS7U"
+        ] = "eyJwYXJ0Ijo5NTMsInVzZXIiOjExNDY2fQ:1vxKWO:kyPBtnRTdFb7k-5XdoPc63E_-zpMP2Rzx0zvGMhnnzs"
         try:
-            Check.equal('je_prestopno(2016)', True)
-            Check.equal('je_prestopno(2015)', False)
-            Check.equal('je_prestopno(2000)', True)
-            Check.equal('je_prestopno(1900)', False)
-            for leto in range(1950, 2050):
-                Check.secret(je_prestopno(leto), leto)
+            Check.equal('vsota_prvih(0)', 0)
+            Check.equal('vsota_prvih(3)', 6)
+            Check.equal('vsota_prvih(5)', 15)
+            Check.equal('vsota_prvih(36)', 666)
+            if type(vsota_prvih(5)) != int:
+                Check.error('Funkcija vsota_prvih ne vrne celega števila.')
         except TimeoutError:
             Check.error("Dovoljen čas izvajanja presežen")
         except Exception:
@@ -673,15 +667,13 @@ def _validate_current_file():
     if Check.part():
         Check.current_part[
             "token"
-        ] = "eyJwYXJ0Ijo5MjgsInVzZXIiOjExNDY2fQ:1vusqV:uI7CaT9hdXgpTUz-GSEDDiUXWBH8hyJ9GvuDT0okm5Y"
+        ] = "eyJwYXJ0Ijo5NTQsInVzZXIiOjExNDY2fQ:1vxKWO:wqrCJqMnR37yXDbifDSPOfZVqcnFAY3jUvFDlc7o5Es"
         try:
-            Check.equal('stevilo_dni(2, 2016)', 29)
-            Check.equal('stevilo_dni(3, 2011)', 31)
-            Check.equal('stevilo_dni(2, 2011)', 28)
-            Check.equal('stevilo_dni(4, 2011)', 30)
-            for leto in range(1999, 2017):
-                for mesec in range(1, 13):
-                    Check.secret(stevilo_dni(mesec, leto), (mesec, leto))
+            Check.equal('vsota_prvih_kvadratov(3)', 14)
+            Check.equal('vsota_prvih_kvadratov(5)', 55)
+            Check.equal('vsota_prvih_kvadratov(36)', 16206)
+            if type(vsota_prvih_kvadratov(5)) != int:
+                Check.error('Funkcija vsota_prvih ne vrne celega števila.')
         except TimeoutError:
             Check.error("Dovoljen čas izvajanja presežen")
         except Exception:
@@ -693,21 +685,16 @@ def _validate_current_file():
     if Check.part():
         Check.current_part[
             "token"
-        ] = "eyJwYXJ0Ijo5MjksInVzZXIiOjExNDY2fQ:1vusqV:gz0mLRMIcUbsYb4vMOREkYWiHfvSelIreSu3BOKYg7g"
+        ] = "eyJwYXJ0Ijo5NTUsInVzZXIiOjExNDY2fQ:1vxKWO:KNbsPZySjHIUqUKzg3-l2We94F5wBx1UW9chpifxJAA"
         try:
-            Check.equal('je_veljaven_datum(29, 2, 2016)', True)
-            Check.equal('je_veljaven_datum(29, 3, 2011)', True)
-            Check.equal('je_veljaven_datum(29, 2, 2011)', False)
-            Check.equal('je_veljaven_datum(35, 4, 2011)', False)
-            Check.equal('je_veljaven_datum(2, 13, 2011)', False)
-            Check.equal('je_veljaven_datum(12, 3, 2016)', True)
-            Check.equal('je_veljaven_datum(-1, 12, 2016)', False)
-            Check.equal('je_veljaven_datum(1, -12, 2016)', False)
-            Check.equal('je_veljaven_datum(1, 12, -2016)', True)
-            for leto in range(1999, 2017):
-                for mesec in range(1, 15):
-                    for dan in range(28, 33):
-                        Check.secret(je_veljaven_datum(dan, mesec, leto), (dan, mesec, leto))
+            try:
+                Check.equal('vsota_prvih_potenc(3)', 6)
+                Check.equal('vsota_prvih_potenc(5, k=2)', 55)
+                Check.equal('vsota_prvih_potenc(36, k=3)', 443556)
+                if type(vsota_prvih_potenc(5)) != int:
+                    Check.error('Funkcija vsota_prvih_potenc ne vrne celega števila.')
+            except:
+                Check.error('Funkcija vsota_prvih_potenc ne deluje pravilno.\nAli je k nastavljen kot neobvezen argument?')
         except TimeoutError:
             Check.error("Dovoljen čas izvajanja presežen")
         except Exception:
